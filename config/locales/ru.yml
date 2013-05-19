@@ -1,0 +1,27 @@
+ru:
+  activerecord:
+    attributes:
+      product:
+        title: 'Наименование'
+        description: 'Описание'
+        image_url: 'Изображение'
+        price: 'Цена'
+    errors:
+      models:
+        product:
+          attributes:
+            title:
+              blank: 'является обязательным для заполнения'
+              taken: 'уже зарезервировано за другим продуктом'
+            description:
+              blank: 'является обязательным для заполнения'
+            image_url:
+              blank: 'продукта должно быть загружено'
+            price:
+              not_a_number: 'должна быть числом, большим, чем 0.01'
+              greater_than_or_equal_to: 'должна быть числом, большим, чем 0.01'
+    models:
+      product: 'Продукция'
+    
+     
+      
