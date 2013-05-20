@@ -7,8 +7,23 @@
   <%= csrf_meta_tags %>
 </head>
 <body class = '<%= controller.controller_name %>'>
-
-<%= yield %>
-
+	<div id="banner">
+		<%= image_tag("rails.png") %>
+		<%= @page_title || "Шалунишки в штанишках" %>
+	</div>
+	<div id="columns">
+		<div id="side">
+			<%= Time.now.strftime("%d.%m.%Y %H:%M") %>
+			<ul>
+				<li><a href="">Домашняя</a></li>
+				<li><a href="">Вопросы</a></li>
+				<li><a href="">Новости</a></li>
+				<li><a href="">Контакты</a></li>
+			</ul>
+		</div>
+		<div id="main">
+			<%= yield %>
+		</div>
+	</div>
 </body>
 </html>
