@@ -10,12 +10,15 @@
 	<div id="banner">
 		<%= image_tag("rails.png") %>
 		<%= @page_title || "Шалунишки в штанишках" %>
+		<br/> Количество обновлений главной страницы:
+		<%= session[:counter] %>
+		(обнуляется при добавлении товара в корзину)
 	</div>
 	<div id="columns">
 		<div id="side">
 			<%= Time.now.strftime("%d.%m.%Y %H:%M") %>
 			<ul>
-				<li><a href="">Домашняя</a></li>
+				<li><a href="/">Домашняя</a></li>
 				<li><a href="">Вопросы</a></li>
 				<li><a href="">Новости</a></li>
 				<li><a href="">Контакты</a></li>

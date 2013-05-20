@@ -9,6 +9,7 @@ ru:
     errors:
       models:
         product:
+          lineitemsexists: 'существуют товарные позиции с данным продуктом'
           attributes:
             title:
               blank: 'является обязательным для заполнения'

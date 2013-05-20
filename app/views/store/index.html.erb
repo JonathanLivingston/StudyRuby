@@ -9,6 +9,7 @@
 		<%= sanitize(product.description) %>
 		<div class="price_line">
 			<span class="price"><%= number_to_currency(product.price, unit: 'руб.', format: "%n %u") %></span>
+			<%= button_to 'Добавить в корзину', line_items_path(product_id: product) %>
 		</div>
 	</div>
 <% end %>	
