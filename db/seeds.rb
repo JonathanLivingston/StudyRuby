@@ -6,6 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 Product.delete_all
+LineItem.delete_all
+Cart.delete_all
 Product.create(title: 'Learning Ruby',
   description: 
     %{<p>
@@ -15,3 +17,18 @@ Product.create(title: 'Learning Ruby',
     </p>},
   image_url: 'rails.png',
   price: 49.95)
+Product.create(title: 'Java',
+  description: 
+    %{<p>
+    Perhaps, the best programming language ever known 
+    </p>},
+  image_url: 'rails.png',
+  price: 99.99)
+Product.create(title: 'Happiness',
+  description: 
+    %{<p>
+    Is it real?
+    </p>},
+  image_url: 'rails.png',
+  price: 0.01)
+

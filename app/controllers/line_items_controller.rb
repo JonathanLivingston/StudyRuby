@@ -42,12 +42,12 @@ class LineItemsController < ApplicationController
   def create
     @cart = current_cart
     product = Product.find(params[:product_id])
-    @line_item = @cart.line_items.build(product: product)
+    @line_item = @cart.add_product(product.id)
     session[:counter] = 0
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to @line_item.cart, notice: 'Line item was successfully created.' }
+        format.html { redirect_to @line_item.cart}
         format.json { render json: @line_item, status: :created, location: @line_item }
       else
         format.html { render action: "new" }
@@ -63,7 +63,7 @@ class LineItemsController < ApplicationController
 
     respond_to do |format|
       if @line_item.update_attributes(params[:line_item])
-        format.html { redirect_to @line_item, notice: 'Line item was successfully updated.' }
+        format.html { redirect_to @line_item}
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -76,10 +76,16 @@ class LineItemsController < ApplicationController
   # DELETE /line_items/1.json
   def destroy
     @line_item = LineItem.find(params[:id])
-    @line_item.destroy
-
+    @cart = current_cart
+    @cart.remove_line_item_unit(params[:id])
+    #TODO проверить, если больше нет лайн итемов, то редирект на главную
     respond_to do |format|
-      format.html { redirect_to line_items_url }
+      if @cart.line_items.size == 0
+        format.html { redirect_to store_url,
+        notice: I18n.translate('activerecord.notice.models.cart.emptynow') }
+      else
+        format.html { redirect_to @line_item.cart }  
+      end
       format.json { head :no_content }
     end
   end

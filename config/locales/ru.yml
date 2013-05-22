@@ -1,5 +1,9 @@
 ru:
   activerecord:
+    notice:
+      models:
+        cart:
+          emptynow: 'Теперь Ваша корзина пуста!'
     attributes:
       product:
         title: 'Наименование'
@@ -8,6 +12,8 @@ ru:
         price: 'Цена'
     errors:
       models:
+        cart:
+          doesnotexistnotice: 'Несуществующая корзина'
         product:
           lineitemsexists: 'существуют товарные позиции с данным продуктом'
           attributes:
