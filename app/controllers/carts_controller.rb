@@ -81,8 +81,9 @@ class CartsController < ApplicationController
     @cart.destroy
     session[:cart_id] = nil
     respond_to do |format|
-      format.html { redirect_to store_url,
-        notice: I18n.translate('activerecord.notice.models.cart.emptynow') }
+      format.js
+#      format.html { redirect_to store_url,
+#        notice: I18n.translate('activerecord.notice.models.cart.emptynow') }
       format.json { head :no_content }
     end
   end

@@ -48,6 +48,7 @@ class LineItemsController < ApplicationController
     respond_to do |format|
       if @line_item.save
         format.html { redirect_to store_url}
+        format.js { @current_item = @line_item }
         format.json { render json: @line_item, status: :created, location: @line_item }
       else
         format.html { render action: "new" }
@@ -80,12 +81,7 @@ class LineItemsController < ApplicationController
     @cart.remove_line_item_unit(params[:id])
     #TODO проверить, если больше нет лайн итемов, то редирект на главную
     respond_to do |format|
-      if @cart.line_items.size == 0
-        format.html { redirect_to store_url,
-        notice: I18n.translate('activerecord.notice.models.cart.emptynow') }
-      else
-        format.html { redirect_to @line_item.cart }  
-      end
+      format.js { @current_item = @line_item }
       format.json { head :no_content }
     end
   end

@@ -1,3 +1,4 @@
+<% unless cart.line_items.empty? %>
 <div class="cart_title">Корзина</div>
 <table>
 	<%= render(cart.line_items)%>
@@ -6,5 +7,6 @@
 		<td class="total_cell"><%= number_to_currency(cart.total_price, unit: 'руб.', format: "%n %u") %></td>
 	</tr>
 </table>
-<%= button_to 'Очистить корзину', cart, method: :delete,
+<%= button_to 'Очистить корзину', cart, method: :delete, remote: true,
  	confirm: 'Действительно очистить корзину?' %>
+<% end %>
