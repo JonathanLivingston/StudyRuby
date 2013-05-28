@@ -82,9 +82,9 @@ class CartsController < ApplicationController
     session[:cart_id] = nil
     respond_to do |format|
       format.js
-#      format.html { redirect_to store_url,
+      format.html { redirect_to store_url }
 #        notice: I18n.translate('activerecord.notice.models.cart.emptynow') }
-      format.json { head :no_content }
+      format.json { head :ok }
     end
   end
 end
